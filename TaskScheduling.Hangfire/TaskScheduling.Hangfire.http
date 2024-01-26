@@ -1,0 +1,6 @@
+@TaskScheduling.Hangfire_HostAddress = http://localhost:5167
+
+GET {{TaskScheduling.Hangfire_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

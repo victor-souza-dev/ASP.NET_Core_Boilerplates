@@ -1,0 +1,6 @@
+@TaskScheduling.Coravel_HostAddress = http://localhost:5111
+
+GET {{TaskScheduling.Coravel_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
