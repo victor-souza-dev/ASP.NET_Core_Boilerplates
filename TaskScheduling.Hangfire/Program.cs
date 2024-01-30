@@ -2,6 +2,8 @@ using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Context;
 using Hangfire.SQLite;
+using Domain.Interfaces;
+using Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,8 @@ builder.Services.AddHangfire((sp, config) =>
 });
 builder.Services.AddDbContext<SQLiteDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("ctx")));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 var app = builder.Build();

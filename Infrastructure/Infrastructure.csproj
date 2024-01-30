@@ -10,7 +10,6 @@
     <Folder Include="Migrations\Redis\" />
     <Folder Include="Migrations\SQLServer\" />
     <Folder Include="Databases\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +23,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="PostSharp" Version="2024.0.5" />
   </ItemGroup>
 
   <ItemGroup>
