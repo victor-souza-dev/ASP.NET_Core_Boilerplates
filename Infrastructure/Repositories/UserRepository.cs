@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
@@ -20,7 +21,7 @@ public class UserRepository : IUserRepository
 
     public Task<List<User>> GetAll()
     {
-        throw new NotImplementedException();
+        return _ctx.User.ToListAsync();
     }
 
     public Task<List<User>> GetWithPagination(GenericPagination pagination)

@@ -18,7 +18,7 @@ namespace TaskScheduling.Hangfire.Controllers
         }
 
         [HttpGet("pagination")]
-        public IActionResult GetWithPagination(GenericPagination pagination)
+        public IActionResult GetWithPagination([FromQuery] GenericPagination pagination)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace TaskScheduling.Hangfire.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             try

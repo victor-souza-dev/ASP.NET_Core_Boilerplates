@@ -3,26 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7C70563B-CD49-4305-B542-6B3AE963C002}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7C70563B-CD49-4305-B542-6B3AE963C002}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{50B3F7EF-E5A5-4576-87CE-05E3BB94A7C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{50B3F7EF-E5A5-4576-87CE-05E3BB94A7C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduling.Hangfire", "TaskScheduling.Hangfire\TaskScheduling.Hangfire.csproj", "{59E69B6F-9F7A-4BFB-9094-954756E1C612}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskScheduling.Hangfire", "TaskScheduling.Hangfire\TaskScheduling.Hangfire.csproj", "{59E69B6F-9F7A-4BFB-9094-954756E1C612}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{FCC117B7-4671-4D84-BE5A-AFEF3812277C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{FCC117B7-4671-4D84-BE5A-AFEF3812277C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduling.Quartz", "TaskScheduling.Quartz\TaskScheduling.Quartz.csproj", "{89A84F99-CE38-4BC4-A01E-4FD55CC5FE8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskScheduling.Quartz", "TaskScheduling.Quartz\TaskScheduling.Quartz.csproj", "{89A84F99-CE38-4BC4-A01E-4FD55CC5FE8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduling.Coravel", "TaskScheduling.Coravel\TaskScheduling.Coravel.csproj", "{143A9966-6C33-43C2-B2F2-F0E5E62D97BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskScheduling.Coravel", "TaskScheduling.Coravel\TaskScheduling.Coravel.csproj", "{143A9966-6C33-43C2-B2F2-F0E5E62D97BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocket.SignalR", "WebSocket.SignalR\WebSocket.SignalR.csproj", "{740BE185-24AB-4627-A09E-3CAE26DB6942}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocket.SignalR", "WebSocket.SignalR\WebSocket.SignalR.csproj", "{740BE185-24AB-4627-A09E-3CAE26DB6942}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.xUnit", "Testing.xUnit\Testing.xUnit.csproj", "{D0AD6D15-AED7-4E94-BD75-FD6080746E53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.xUnit", "Testing.xUnit\Testing.xUnit.csproj", "{D0AD6D15-AED7-4E94-BD75-FD6080746E53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{AB12F29A-7491-4245-8966-B0311DBD0E74}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoC", "IoC\IoC.csproj", "{3F50A998-C62A-4278-9CF6-014F7466DFFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{D0AD6D15-AED7-4E94-BD75-FD6080746E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0AD6D15-AED7-4E94-BD75-FD6080746E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0AD6D15-AED7-4E94-BD75-FD6080746E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F50A998-C62A-4278-9CF6-014F7466DFFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F50A998-C62A-4278-9CF6-014F7466DFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F50A998-C62A-4278-9CF6-014F7466DFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F50A998-C62A-4278-9CF6-014F7466DFFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
