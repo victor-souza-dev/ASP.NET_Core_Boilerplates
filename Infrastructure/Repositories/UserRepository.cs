@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class UserRepository : GenericRepository<User, UserPaginationResponse>, IUserRepository
+public class UserRepository : PaginationRepository<User, UserPaginationResponse>, IUserRepository
 {
     private readonly SQLiteDbContext _ctx;
 

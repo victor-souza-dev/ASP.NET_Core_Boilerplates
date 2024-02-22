@@ -5,11 +5,11 @@ using Microsoft.Extensions.Caching.Memory;
 namespace Infrastructure.Repositories;
 
 // Template Method
-public abstract class GenericRepository<T, TList> {
+public abstract class PaginationRepository<T, TList> {
     private readonly QueryManipulator _queryManipulator;
     private readonly IMemoryCache _memoryCache;
 
-    public GenericRepository() {
+    public PaginationRepository() {
         _queryManipulator = new QueryManipulator();
         _memoryCache = new MemoryCache(new MemoryCacheOptions());
     }
