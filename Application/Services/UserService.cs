@@ -1,7 +1,7 @@
-﻿using Application.Interfaces;
+﻿using Application.Abstractions.Interfaces;
+using Application.Abstractions.Responses;
+using Application.Interfaces;
 using Domain.Entities;
-using Domain.Interfaces;
-
 
 namespace Application.Services;
 
@@ -14,33 +14,41 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public void Create(User body)
-    {
-        _userRepository.Create(body);
-    }
-
-    public void Delete(string id)
-    {
-        _userRepository.Delete(id);
-    }
-
-    public Task<List<User>> GetAll()
-    {
+    public Task<List<User>> GetAll() {
         return _userRepository.GetAll();
     }
 
-    public Task<User> GetById(int id)
-    {
-        return _userRepository.GetById(id);
+    public async Task<User> GetById(Guid id) {
+        User? user = await _userRepository.GetById(id);
+
+        if (user == null) {
+            throw new Exception("Nenhum usuário encontrado!");
+        }
+
+        return user;
     }
 
-    public Task<List<User>> GetWithPagination(GenericPagination pagination)
+    public async void Create(User body)
     {
-        return _userRepository.GetWithPagination(pagination);
+        User? user = await _userRepository.GetByEmail(body.Email);
+
+        if(user != null) {
+            throw new Exception("Usuário já existe!");
+        }
+
+        _userRepository.Create(body);
     }
 
-    public void Update(string id, User body)
+    public void Update(Guid id, User body)
     {
         _userRepository.Update(id, body);
+    }
+    
+    public void Delete(Guid id) {
+        _userRepository.Delete(id);
+    }
+
+    public async Task<UserPaginationResponse> GetWithPagination(GenericPagination pagination) {
+        return await _userRepository.GetWithPagination(pagination);
     }
 }

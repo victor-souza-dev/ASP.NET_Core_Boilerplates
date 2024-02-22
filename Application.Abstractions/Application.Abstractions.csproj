@@ -7,13 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Mappings\**" />
-    <EmbeddedResource Remove="Mappings\**" />
-    <None Remove="Mappings\**" />
+    <Folder Include="Mapping\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application.Abstractions\Application.Abstractions.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 

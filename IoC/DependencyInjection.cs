@@ -1,7 +1,8 @@
-﻿using Application.Interfaces;
+﻿using Application.Abstractions.Interfaces;
+using Application.Interfaces;
 using Application.Services;
-using Domain.Interfaces;
 using Infrastructure.Context;
+using Infrastructure.Helpers;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +17,8 @@ public static class DependencyInjection {
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
+
+        services.AddTransient<QueryManipulator>();
 
         return services;
     }
