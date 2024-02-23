@@ -1,10 +1,11 @@
-﻿using Application.Abstractions.Responses;
+﻿using Application.Abstractions.Requests;
+using Application.Abstractions.Responses;
 using Domain.Entities;
 
 namespace Application.Abstractions.Interfaces;
 
-public interface IUserRepository: IGenericRepository<User, GenericPagination>
+public interface IUserRepository: IGenericRepository<User>
 {
-    Task<UserPaginationResponse> GetWithPagination(GenericPagination pagination);
+    Task<IGenericPaginationResponse<User>> GetWithPagination(IGenericPaginationRequest pagination);
     Task<User?> GetByEmail(string email);
 }

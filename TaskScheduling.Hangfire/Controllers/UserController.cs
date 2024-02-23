@@ -17,7 +17,7 @@ namespace TaskScheduling.Hangfire.Controllers
         }
 
         [HttpGet("pagination")]
-        public IActionResult GetWithPagination([FromQuery] Domain.Entities.GenericPagination pagination)
+        public IActionResult GetWithPagination([FromQuery] GenericPaginationRequest pagination)
         {
             try
             {

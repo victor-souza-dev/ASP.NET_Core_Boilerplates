@@ -1,11 +1,9 @@
-﻿using Application.Abstractions.Filters;
-using Application.Abstracts;
+﻿using Application.Abstractions.Requests;
+using Application.Abstractions.Responses;
 using Domain.Enums;
 
-namespace Application.DTOs
-{
-    public class GenericPagination : IPagination, IFilter, IOrder
-    {
+namespace Application.DTOs {
+    public class GenericPaginationRequest : IGenericPaginationRequest {
         public int Page { get; set; } = 1;
         public int Size { get; set; } = 10;
         public string Query { get; set; } = "";

@@ -1,6 +1,9 @@
 ﻿using Application.Abstractions.Interfaces;
+using Application.Abstractions.Requests;
 using Application.Abstractions.Responses;
+using Application.DTOs;
 using Application.Interfaces;
+using AutoMapper;
 using Domain.Entities;
 
 namespace Application.Services;
@@ -8,10 +11,12 @@ namespace Application.Services;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IMapper _mapper;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(IUserRepository userRepository, IMapper mapper)
     {
         _userRepository = userRepository;
+        _mapper = mapper;
     }
 
     public Task<List<User>> GetAll() {
@@ -48,7 +53,17 @@ public class UserService : IUserService
         _userRepository.Delete(id);
     }
 
-    public async Task<UserPaginationResponse> GetWithPagination(GenericPagination pagination) {
-        return await _userRepository.GetWithPagination(pagination);
+    public async Task<UserPaginationDTO<UserResponseDTO>> GetWithPagination(IGenericPaginationRequest pagination) {
+        IGenericPaginationResponse<User> paginationResponse = await _userRepository.GetWithPagination(pagination);
+
+        var mappedItems = _mapper.Map<List<User>, List<UserResponseDTO>>(paginationResponse.Items);
+
+        var userPaginationDTO = new UserPaginationDTO<UserResponseDTO> {
+            Items = mappedItems,
+            TotalCount = paginationResponse.TotalCount,
+            HasNext = paginationResponse.HasNext
+        };
+
+        return userPaginationDTO;
     }
 }

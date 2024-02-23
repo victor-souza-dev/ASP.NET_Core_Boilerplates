@@ -1,6 +1,6 @@
 ﻿namespace Application.Abstractions.Interfaces;
 
-public interface IGenericRepository<T, Pagination>
+public interface IGenericRepository<T>
 {
     Task<List<T>> GetAll();
     Task<T?> GetById(Guid id);

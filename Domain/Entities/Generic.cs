@@ -20,11 +20,3 @@ public class GenericIdInt : Generic
 {
     public int Id { get; private set; }
 }
-
-public class GenericPagination {
-    public int Page { get; set; } = 1;
-    public int Size { get; set; } = 10;
-    public string Query { get; set; } = "";
-    public string? OrderBy { get; set; }
-    public OrderEnum? Order { get; set; } = OrderEnum.asc;
-}

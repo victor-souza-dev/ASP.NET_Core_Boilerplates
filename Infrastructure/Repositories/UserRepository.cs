@@ -6,13 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class UserRepository : PaginationRepository<User, UserPaginationResponse>, IUserRepository
+public class UserRepository : PaginationRepository<User>, IUserRepository
 {
     private readonly SQLiteDbContext _ctx;
+    private readonly IGenericPaginationResponse<User> _response;
 
-    public UserRepository(SQLiteDbContext ctx)
-    {
+    public UserRepository(SQLiteDbContext ctx, IGenericPaginationResponse<User> response) {
         _ctx = ctx;
+        _response = response;
     }
     protected override IQueryable<User> GetItemsQuery(string formattedQuery) {
         return _ctx.User
@@ -20,12 +21,12 @@ public class UserRepository : PaginationRepository<User, UserPaginationResponse>
             .Where(p => p.Name.ToLower().Replace(" ", "").Contains(formattedQuery));
     }
 
-    protected override UserPaginationResponse CreateList(List<User> items, int totalCount, bool hasNext) {
-        return new UserPaginationResponse {
-            Items = items,
-            TotalCount = totalCount,
-            HasNext = hasNext
-        };
+    protected override IGenericPaginationResponse<User> CreateList(List<User> items, int totalCount, bool hasNext) {
+        _response.HasNext = hasNext;
+        _response.TotalCount = totalCount;
+        _response.Items = items;
+
+        return _response;
     }
 
     public Task<List<User>> GetAll()

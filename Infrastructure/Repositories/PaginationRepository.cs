@@ -1,11 +1,13 @@
-﻿using Domain.Entities;
+﻿using Application.Abstractions.Interfaces;
+using Application.Abstractions.Requests;
+using Application.Abstractions.Responses;
 using Infrastructure.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 namespace Infrastructure.Repositories;
 
 // Template Method
-public abstract class PaginationRepository<T, TList> {
+public abstract class PaginationRepository<T> {
     private readonly QueryManipulator _queryManipulator;
     private readonly IMemoryCache _memoryCache;
 
@@ -15,7 +17,7 @@ public abstract class PaginationRepository<T, TList> {
     }
 
     // Método que realiza paginação em cima do resultado da GetItemsQuery - GetAll
-    public async Task<TList> GetWithPagination(GenericPagination pagination) {
+    public async Task<IGenericPaginationResponse<T>> GetWithPagination(IGenericPaginationRequest pagination) {
         string query = pagination.Query;
         int page = pagination.Page;
         int pageSize = pagination.Size;
@@ -23,7 +25,7 @@ public abstract class PaginationRepository<T, TList> {
         var formattedQuery = _queryManipulator.FormatQuery(query);
         string ME_KEY = $"{page}_{pageSize}_{formattedQuery}";
 
-        if (_memoryCache.TryGetValue(ME_KEY, out TList? me)) {
+        if (_memoryCache.TryGetValue(ME_KEY, out IGenericPaginationResponse<T>? me)) {
             return me ?? throw new Exception("Valor obtido do cache é nulo.");
         }
 
@@ -46,7 +48,7 @@ public abstract class PaginationRepository<T, TList> {
 
         bool hasNext = startIndex + pageSize < totalCount;
 
-        TList payload = CreateList(itemsOnPage, totalCount, hasNext);
+        IGenericPaginationResponse<T> payload = CreateList(itemsOnPage, totalCount, hasNext);
 
         _memoryCache.Set(ME_KEY, payload, memoryCacheEntryOptions);
 
@@ -57,7 +59,7 @@ public abstract class PaginationRepository<T, TList> {
     protected abstract IQueryable<T> GetItemsQuery(string formattedQuery);
 
     // Método para formatar o retorno dos dados
-    protected abstract TList CreateList(List<T> items, int totalCount, bool hasNext);
+    protected abstract IGenericPaginationResponse<T> CreateList(List<T> items, int totalCount, bool hasNext);
 
     private void ValidateParameters(ref int page, ref int pageSize) {
         if (page <= 0)
