@@ -1,6 +1,6 @@
 ﻿namespace Domain.Enums;
 
-public enum SortDirectionEnum { 
+public enum OrderEnum { 
     asc = 0, 
     desc = 1
 }

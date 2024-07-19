@@ -7,17 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Mappings\**" />
-    <EmbeddedResource Remove="Mappings\**" />
-    <None Remove="Mappings\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application.Abstractions\Application.Abstractions.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 

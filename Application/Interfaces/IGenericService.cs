@@ -1,18 +1,10 @@
-﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Application.Interfaces;
 
-namespace Application.Interfaces;
-
-public interface IGenericService<T, Pagination>
+public interface IGenericService<T>
 {
     Task<List<T>> GetAll();
-    Task<List<T>> GetWithPagination(Pagination pagination);
-    Task<T> GetById(int id);
+    Task<T> GetById(Guid id);
     void Create(T body);
-    void Update(string id, T body);
-    void Delete(string id);
+    void Update(Guid id, T body);
+    void Delete(Guid id);
 }

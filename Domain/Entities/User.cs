@@ -12,4 +12,10 @@ public class User: GenericIdGuid
         Email = email;
         Password = password;
     }
+
+    public void Update(string name, string email, string password) {
+        Name = name;
+        Email = email;
+        Password = password;
+    }
 }

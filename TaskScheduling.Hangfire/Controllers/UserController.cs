@@ -1,8 +1,7 @@
-using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Application.DTOs;
 using Application.Interfaces;
 using Domain.Entities;
+using Application.DTOs;
 
 namespace TaskScheduling.Hangfire.Controllers
 {
@@ -18,11 +17,11 @@ namespace TaskScheduling.Hangfire.Controllers
         }
 
         [HttpGet("pagination")]
-        public IActionResult GetWithPagination(GenericPagination pagination)
+        public IActionResult GetWithPagination([FromQuery] GenericPaginationRequest pagination)
         {
             try
             {
-                return Ok(_userService.GetWithPagination(pagination));
+                return Ok(_userService.GetWithPagination(pagination).Result);
             } catch(Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -41,8 +40,8 @@ namespace TaskScheduling.Hangfire.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult GetById(int id)
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
         {
             try
             {
@@ -70,7 +69,7 @@ namespace TaskScheduling.Hangfire.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] UserDTO body, string id)
+        public IActionResult Update([FromBody] UserDTO body, Guid id)
         {
             try
             {
@@ -85,7 +84,7 @@ namespace TaskScheduling.Hangfire.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(Guid id)
         {
             try
             {
